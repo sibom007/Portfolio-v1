@@ -5,6 +5,7 @@ export type Tskills = {
 };
 
 export type Tprojects = {
+  id: string;
   name: string;
   driscaption: string;
   img: string;
@@ -15,4 +16,11 @@ export type Tblogs = {
   date: string;
   driscaption: string;
   img: string;
+};
+
+export type Tprops = {
+  params: {
+    Id: string;
+  };
+  searchParams: {};
 };

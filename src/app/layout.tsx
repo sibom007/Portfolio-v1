@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./(landingPage)/components/Navbar/Navbar";
+import Providers from "@/libs/Provider/Providers";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -14,14 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className="bg-[rgb(15,7,21)] bg-gradient-to-r from-[rgb(15,7,21)] to-[rgb(26,22,66)] 
-      
-      ">
-        <div className="">
+      <body className="bg-[rgb(15,7,21)] bg-gradient-to-r from-[rgb(15,7,21)] to-[rgb(26,22,66)]">
+        <Providers>
           <Navbar />
           {children}
-        </div>
+        </Providers>
       </body>
     </html>
   );

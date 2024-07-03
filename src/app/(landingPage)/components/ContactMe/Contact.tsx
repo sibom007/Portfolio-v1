@@ -6,7 +6,7 @@ import { AiFillShop } from "react-icons/ai";
 
 const Contact = () => {
   return (
-    <div className="mt-20 bg-[#130c25] text-white">
+    <div className="mt-20 bg-[#130c25] text-white Contact">
       <div className="pt-16 pb-16 px-16 md:flex gap-10 md:gap-20 lg:gap-36 items-center">
         <div>
           <div className="bg-[#140c1c] p-7 md:p-14 lg:p-16 rounded-lg shadow-md">

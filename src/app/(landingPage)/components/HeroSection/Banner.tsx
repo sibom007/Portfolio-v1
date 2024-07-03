@@ -4,6 +4,7 @@ import { AiOutlineLinkedin } from "react-icons/ai";
 import { AiOutlineDiscord } from "react-icons/ai";
 import HISubbanner from "./HISubbanner";
 import BannerImg from "./BannerImg";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -35,18 +36,27 @@ const Banner = () => {
             ">
                 Project
               </button>
-              <p>
+              <Link
+                href={
+                  "https://drive.google.com/file/d/1lZhh1_m1hNxd6M674KoRYAgmyE4fej9n/view?usp=sharing"
+                }
+                className="text-sm font-semibold border-2 border-primary   text-white px-2 py-1 md:px-6 md:py-3 md:text-base 
+            rounded-full duration-500
+            ">
+                View Resume
+              </Link>
+              <Link href={"https://www.facebook.com/"}>
                 <AiOutlineFacebook className=" size-6 lg:size-10 md:size-7 text-primary  border-2 rounded-full p-[3px] lg:p-2 md:p-1 border-primary  hover:text-white hover:bg-primary duration-500" />
-              </p>
-              <p>
+              </Link>
+              <Link href={"https://discord.gg/j3EatKqG"}>
                 <AiOutlineDiscord className=" size-6 lg:size-10 md:size-7 text-primary  border-2 rounded-full p-[3px] lg:p-2 md:p-1 border-primary  hover:text-white hover:bg-primary duration-500" />
-              </p>
+              </Link>
               <p>
                 <AiOutlineLinkedin className=" size-6 lg:size-10 md:size-7 text-primary  border-2 rounded-full p-[3px] lg:p-2 md:p-1 border-primary  hover:text-white hover:bg-primary duration-500" />
               </p>
-              <p>
+              <Link href={"https://github.com/"}>
                 <AiFillGithub className=" size-6 lg:size-10 md:size-7 text-primary  border-2 rounded-full p-[3px] lg:p-2 md:p-1 border-primary  hover:text-white hover:bg-primary duration-500" />
-              </p>
+              </Link>
             </ul>
           </div>
         </div>

@@ -1,0 +1,44 @@
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model skills {
+ id          String     @id @default(uuid())
+  name  String
+  percentage String
+  icon String
+}
+
+model projects {
+id          String     @id @default(uuid())
+  name        String
+  driscaption String
+  technologies String?
+  type        type @default(ALL)
+  githubClient      String?
+  githubServer      String?
+  Live        String?
+  img         String
+}
+
+model blogs {
+  id          String     @id @default(uuid())
+  name        String
+  date        String
+  driscaption String
+  img         String
+}
+
+
+enum type {
+ALL
+FORENTEND
+BACKEND
+}

@@ -1,11 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import jsPDF from "jspdf";
 import Link from "next/link";
 import { useState } from "react";
 import { AiOutlineCloudDownload } from "react-icons/ai";
-
 const Links = () => {
+  const handledw = () => {
+    const doc = new jsPDF("portrait", "px", "a4", false);
+    doc.addImage(
+      "https://i.ibb.co/TqYyhxL/Add-a-subheading.jpg",
+      "JPEG",
+      0,
+      0,
+      428,
+      525
+    );
+    doc.save("resume.pdf");
+  };
+
   const Links = [
     {
       name: "Home",
@@ -21,11 +34,11 @@ const Links = () => {
     },
     {
       name: "Contact",
-      path: "/",
+      path: "#contact",
     },
     {
       name: "Skills",
-      path: "/",
+      path: "#skills",
     },
   ];
 
@@ -56,7 +69,7 @@ const Links = () => {
         type: "spring",
         stiffness: 260,
         damping: 20,
-        delay: 0.5,
+        delay: 0.1,
       }}
       className="flex md:gap-7 lg:gap-10 items-center">
       {Links.map((link, index) => (
@@ -77,7 +90,9 @@ const Links = () => {
         </Link>
       ))}
 
-      <button className="hover:text-white text-primary flex items-center gap-3  border-2 border-primary hover:bg-primary duration-500 px-4 py-2 rounded-3xl">
+      <button
+        onClick={handledw}
+        className="hover:text-white text-primary flex items-center gap-3  border-2 border-primary hover:bg-primary duration-500 px-4 py-2 rounded-3xl">
         Download Resume <AiOutlineCloudDownload className="size-4 " />
       </button>
     </motion.div>
