@@ -57,17 +57,13 @@ const container = {
     },
 };
 
-const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
 
 export function Projects() {
     return (
         <div>
 
-            <Tabs defaultValue="all" className="w-full mt-24">
-                <TabsList className="grid w-full max-w-5xl mx-auto grid-cols-3 bg-primary text-white">
+            <Tabs defaultValue="all" className="w-full mt-24 px-2">
+                <TabsList className="grid w-full max-w-5xl  mx-auto grid-cols-3 bg-primary text-white">
                     <TabsTrigger className="data-[state=active]:bg-ThemePrimary-700 data-[state=active]:text-white" value="all">All</TabsTrigger>
                     <TabsTrigger className="data-[state=active]:bg-ThemePrimary-700 data-[state=active]:text-white" value="frontEnd">FrontEnd</TabsTrigger>
                     <TabsTrigger className="data-[state=active]:bg-ThemePrimary-700 data-[state=active]:text-white" value="backEnd">BackEnd</TabsTrigger>
@@ -78,7 +74,7 @@ export function Projects() {
                         variants={container}
                         initial="hidden"
                         animate="show"
-                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-2 mt-3"
+                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-2 mt-3"
                     >
                         {projects.map((project) => (
                             <ProjectCard key={project.id} project={project} />
