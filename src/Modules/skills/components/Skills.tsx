@@ -22,7 +22,7 @@ const skills = [
     { name: 'Shadcn', icon: <SiShadcnui /> },
 ];
 
-const Skill = () => {
+export const Skills = () => {
     return (
         <div className="relative w-full h-screen flex items-center justify-center flex-col">
             {/* Title at the top */}
@@ -33,7 +33,7 @@ const Skill = () => {
                     textShadow: '0 4px 6px rgba(0, 78, 146, 0.5)',
                 }}
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                whileInView={{ opacity: 1 }}
                 transition={{ duration: 1 }}
             >
                 My Skills
@@ -46,7 +46,7 @@ const Skill = () => {
                     fontSize: '120px', // Make the icon bigger
                     color: '#007ACC', // VS Code color
                 }}
-                animate={{ rotate: 360 }} // Adding rotation effect
+                whileInView={{ rotate: 360 }} // Adding rotation effect
                 transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
             >
                 <VscVscodeInsiders />
@@ -96,4 +96,4 @@ const Skill = () => {
     );
 };
 
-export default Skill;
+

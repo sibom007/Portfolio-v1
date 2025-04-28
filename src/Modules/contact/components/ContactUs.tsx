@@ -4,13 +4,13 @@ import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 export const ContactUs = () => {
     return (
-        <div className="max-h-screen ">
+        <div className="">
             <h1 className="text-4xl font-bold text-center  mt-4 text-white">Get in Touch</h1>
             <div className="flex flex-col md:flex-row items-center justify-center p-6 gap-8">
                 {/* Left: Form */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     className="w-full md:w-1/2 bg-ThemePrimary-600/20 rounded-2xl shadow-lg p-8"
                 >
@@ -42,8 +42,8 @@ export const ContactUs = () => {
 
                 {/* Right: WhatsApp and Email */}
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="w-full md:w-1/2 flex flex-col items-center justify-center bg-white/90 rounded-2xl shadow-lg p-8"
                 >

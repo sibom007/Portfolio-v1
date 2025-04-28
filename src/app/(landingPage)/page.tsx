@@ -1,11 +1,10 @@
-import Banner from "@/app/(landingPage)/components/HeroSection/Banner";
-import Footer from "./components/Footer/Footer";
 
+import Banner from "@/Modules/heroSections/components/HeroSection/Banner";
 import { Projects } from "@/Modules/Project/components/Projects";
-import Skills from "@/Modules/skills/components/Skills";
+import { Skills } from "@/Modules/skills/components/Skills";
 import { About } from "@/Modules/about/components/About";
 import { ContactUs } from "@/Modules/contact/components/ContactUs";
-// import Skills from "@/Modules/skills/components/Skills";
+import Footer from "../../Modules/shared/Footer";
 
 
 
@@ -17,7 +16,6 @@ const MainPage = () => {
       <Skills />
       <About />
       <ContactUs />
-      <Footer />
     </div>
   );
 };

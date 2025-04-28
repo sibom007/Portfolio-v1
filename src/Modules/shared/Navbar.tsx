@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Links from "./DestopMenu/Links";
-import MobileMenu from "./MobileMenu/MobileMenu";
+import Links from "./Links";
+import MobileMenu from "./MobileMenu";
 import logo from "@/assets/icons/—Pngtree—letter s logo png_8280506.png";
 
 const Navbar = () => {

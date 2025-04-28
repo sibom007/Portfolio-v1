@@ -22,7 +22,7 @@ export function About() {
                 {/* Image side */}
                 <motion.div
                     initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    whileInView={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8 }}
                     className="w-full md:w-1/2 flex justify-center"
                 >
@@ -37,8 +37,8 @@ export function About() {
 
                 {/* Text side */}
                 <motion.div
-                    initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    initial={{ x: 10, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8 }}
                     className="w-full md:w-1/2 text-center md:text-left"
                 >
@@ -56,7 +56,7 @@ export function About() {
                         </motion.p>))}
 
                     {/* Icons */}
-                    <div className="flex flex-wrap justify-center md:justify-start gap-6">
+                    <div className="flex flex-wrap justify-center md:justify-start gap-6 mt-10">
                         <Link href={"https://github.com/sibom007"} className="flex items-center gap-2">
                             <FaGithub className="text-[#804ceb] w-6 h-6" />
                             <span className="text-white">Github</span>
