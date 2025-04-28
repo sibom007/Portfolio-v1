@@ -1,16 +1,13 @@
 "use client";
-import { Blogs } from "@/Data/data";
-import { Tblogs } from "@/Types";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { BsArrowRight } from "react-icons/bs";
 import { AiFillCalendar, AiFillMessage } from "react-icons/ai";
-import { useGetBlogListQuery } from "@/Redux/api/blogApi";
+
 import LoaderPage from "@/components/Loader/Loader";
 
 const Blog = () => {
-  const { data, isFetching, isLoading } = useGetBlogListQuery("");
-
   return (
     <div className="mt-40 px-16 text-white">
       <motion.h1

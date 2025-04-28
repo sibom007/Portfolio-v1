@@ -1,10 +1,11 @@
 import Banner from "@/app/(landingPage)/components/HeroSection/Banner";
-import Skills from "./components/skills/Skills";
-import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer/Footer";
-import About from "./components/About/About";
-import Contact from "./components/ContactMe/Contact";
-import Blog from "./components/Blog/Blog";
+
+import { Projects } from "@/Modules/Project/components/Projects";
+import Skills from "@/Modules/skills/components/Skills";
+// import Skills from "@/Modules/skills/components/Skills";
+
+
 
 const MainPage = () => {
   return (
@@ -12,9 +13,12 @@ const MainPage = () => {
       <Banner />
       <Projects />
       <Skills />
-      <Blog />
-      <About />
-      <Contact />
+
+      {/* <Projects />
+      <Skills />
+      <Blog /> */}
+      {/* <About />
+      <Contact /> */}
       <Footer />
     </div>
   );

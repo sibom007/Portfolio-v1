@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./(landingPage)/components/Navbar/Navbar";
-import Providers from "@/libs/Provider/Providers";
+import Providers from "@/lib/Providers";
+
 
 export const metadata: Metadata = {
   title: "Portfolio",

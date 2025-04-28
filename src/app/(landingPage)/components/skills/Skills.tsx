@@ -3,8 +3,7 @@ import Image from "next/image";
 import Github from "@/assets/icons/code.png";
 import { motion } from "framer-motion";
 import { skills } from "@/Data/data";
-import { Tskills } from "@/Types";
-import { useGetSkillsListQuery } from "@/Redux/api/skillsApi";
+
 import LoaderPage from "@/components/Loader/Loader";
 
 const Skills = () => {
