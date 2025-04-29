@@ -9,7 +9,7 @@ const Links = () => {
   const handledw = () => {
     const doc = new jsPDF("portrait", "px", "a4", false);
     doc.addImage(
-      "https://i.ibb.co/TqYyhxL/Add-a-subheading.jpg",
+      "https://res.cloudinary.com/dwor90h8p/image/upload/v1745930515/Screenshot_2025-04-29_173905_waalzp.png",
       "JPEG",
       0,
       0,
