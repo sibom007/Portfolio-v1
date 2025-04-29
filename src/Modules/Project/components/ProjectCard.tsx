@@ -3,8 +3,9 @@ import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { GithubIcon, GlobeIcon, ServerIcon, XIcon } from "lucide-react";
+import { projects } from "@prisma/client";
 
-export const ProjectCard = ({ project }: { project: any }) => {
+export const ProjectCard = ({ project }: { project: projects }) => {
     const [open, setOpen] = useState(false);
     const item = {
         hidden: { opacity: 0, y: 20 },
@@ -27,7 +28,7 @@ export const ProjectCard = ({ project }: { project: any }) => {
                 <Image
                     width={500}
                     height={500}
-                    src={project.image}
+                    src={project.url}
                     alt={project.name}
                     className="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-500"
                 />
@@ -76,7 +77,7 @@ export const ProjectCard = ({ project }: { project: any }) => {
                                 <Image
                                     width={500}
                                     height={500}
-                                    src={project.image}
+                                    src={project.url}
                                     alt={project.name}
                                     className="object-cover w-full h-full rounded-lg"
                                 />
@@ -87,23 +88,23 @@ export const ProjectCard = ({ project }: { project: any }) => {
                                 <h2 className="text-3xl font-bold">{project.name}</h2>
                                 <p className="text-white">{project.description}</p>
                                 <div className="flex items-center gap-4">
-                                    {project.liveUrl && (
+                                    {project.liveLink && (
                                         <Button size="icon" variant="outline" className="hover:text-ThemePrimary-600 text-ThemePrimary-400" asChild>
-                                            <a href={project.liveUrl} target="_blank">
+                                            <a href={project.liveLink} target="_blank">
                                                 <GlobeIcon className="w-5 h-5 " />
                                             </a>
                                         </Button>
                                     )}
-                                    {project.frontendUrl && (
+                                    {project.gitFrontend && (
                                         <Button size="icon" variant="outline" className="hover:text-ThemePrimary-600 text-ThemePrimary-400" asChild>
-                                            <a href={project.frontendUrl} target="_blank">
+                                            <a href={project.gitFrontend} target="_blank">
                                                 <GithubIcon className="w-5 h-5" />
                                             </a>
                                         </Button>
                                     )}
-                                    {project.backendUrl && (
+                                    {project.gitBackend && (
                                         <Button size="icon" variant="outline" className="hover:text-ThemePrimary-600 text-ThemePrimary-400" asChild>
-                                            <a href={project.backendUrl} target="_blank">
+                                            <a href={project.gitBackend} target="_blank">
                                                 <ServerIcon className="w-5 h-5" />
                                             </a>
                                         </Button>
