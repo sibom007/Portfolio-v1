@@ -54,7 +54,7 @@ const Banner = () => {
             transition={{ duration: 1, delay: 0.6 }}
           >
             <Link
-              href="https://drive.google.com/file/d/1lZhh1_m1hNxd6M674KoRYAgmyE4fej9n/view?usp=sharing"
+              href="https://drive.google.com/file/d/1V4oNHV8M2mrSkB2MqY1bjrk9yi9h-Iqr/view?usp=sharing"
               target="_blank"
               className="text-sm font-semibold border-2 border-primary text-white px-5 py-2 md:px-6 md:py-3 md:text-base rounded-full hover:bg-primary hover:text-white transition duration-500"
             >
