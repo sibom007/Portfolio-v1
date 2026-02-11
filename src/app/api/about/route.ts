@@ -1,1 +1,0 @@
-export { GET, POST, PUT, DELETE } from "@/Modules/about/server/route";
