@@ -1,5 +1,5 @@
 import Particles from "@/components/Particles";
-import { ProjectList } from "@/feature/dashboard/components/project-list";
+import { DashboardProjectList } from "@/feature/dashboard/components/dashboard-project-list";
 
 export default function Page() {
   return (
@@ -24,7 +24,7 @@ export default function Page() {
         </div>
 
         <div className="relative z-10 p-8 max-w-6xl mx-auto">
-          <ProjectList />
+          <DashboardProjectList />
         </div>
       </div>
     </main>

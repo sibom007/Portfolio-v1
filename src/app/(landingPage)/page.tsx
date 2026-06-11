@@ -9,7 +9,7 @@ import { HeroSection } from "@/feature/hero-section/components/hero-section";
 
 const MainPage = () => {
   return (
-    <div className="relative min-h-screen  overflow-hidden bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="relative min-h-screen   overflow-hidden bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
       {/*  BACKGROUND LAYER */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Particles
@@ -29,7 +29,7 @@ const MainPage = () => {
       </div>
 
       {/*  CONTENT LAYER */}
-      <div className="relative z-10">
+      <div className="relative  z-10">
         <Navbar />
         <HeroSection />
         <ProjectView />

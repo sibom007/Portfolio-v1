@@ -27,14 +27,14 @@ export function HeroSection() {
   ];
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden">
+    <div className="relative w-full min-h-screen overflow-x-hidden container mx-auto">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-40 h-40 sm:w-72 sm:h-72 bg-blue-500/10 rounded-full blur-2xl sm:blur-3xl" />
         <div className="absolute bottom-10 sm:bottom-20 right-10 sm:right-20 w-52 h-52 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full blur-2xl sm:blur-3xl" />
       </div>
 
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-16 min-h-screen flex items-center">
+      <div className="relative py-14  flex items-center">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center w-full max-w-7xl mx-auto">
           {/* LEFT */}
           <motion.div
@@ -72,29 +72,6 @@ export function HeroSection() {
               Crafting elegant digital experiences through clean code,
               innovative design, and thoughtful engineering.
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Magnet magnetStrength={3}>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-primary text-white font-semibold rounded-lg shadow-lg">
-                  View Projects
-                </motion.button>
-              </Magnet>
-              <Magnet magnetStrength={3}>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white/10 text-white font-semibold rounded-lg border border-white/20">
-                  Contact Me
-                </motion.button>
-              </Magnet>
-            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

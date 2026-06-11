@@ -53,8 +53,8 @@ export function ContactUsView() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6">
-      <div className="max-w-4xl w-full">
+    <section className="min-h-screen flex items-center justify-center container mx-auto ">
+      <div className=" w-full">
         {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}

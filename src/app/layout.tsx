@@ -1,6 +1,6 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import { Providers } from "@/lib/Providers";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Sibom",

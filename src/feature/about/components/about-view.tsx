@@ -32,7 +32,7 @@ export function AboutView() {
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen overflow-hidden px-6 py-24">
+      className="relative min-h-screen overflow-hidden  py-24">
       {/* Floating social icons */}
       <FloatingIcon
         href="https://github.com/sibom007"
@@ -53,7 +53,7 @@ export function AboutView() {
         className="top-1/3 right-8"
       />
 
-      <div className="container mx-auto flex flex-col md:flex-row items-center gap-20">
+      <div className="  flex flex-col md:flex-row items-center gap-20">
         {/* Image with REAL parallax */}
         <motion.div
           style={{ x, y }}
@@ -127,7 +127,7 @@ function FloatingIcon({
 }) {
   return (
     <motion.div
-      className={`absolute z-20 ${className}`}
+      className={`absolute z-20 container mx-auto ${className}`}
       animate={{ y: [0, -14, 0] }}
       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       whileHover={{ scale: 1.25 }}>

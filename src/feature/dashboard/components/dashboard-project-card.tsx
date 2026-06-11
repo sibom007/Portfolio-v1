@@ -1,155 +1,175 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { projects } from "@prisma/client";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Github, Globe, Trash2 } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
-import { useDeleteProject } from "../hooks/use-projects";
-import { EditProjectDialog } from "./edit-project-dialog";
+"use client";
 
-interface Props {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+import { projects } from "@prisma/client";
+import {
+  ExternalLink,
+  GitBranch,
+  Trash2,
+  Pencil,
+  Github,
+  Database,
+  Globe,
+  CheckCircle2,
+  Clock,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { useDeleteProject, useUpdateProject } from "@/hooks/use-projects";
+import Image from "next/image";
+import { EditProjectDialog } from "./edit-project-dialog";
+import { useState } from "react";
+import { DeleteProjectDialog } from "./delete-project-dialog";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
+
+interface ProjectCardProps {
   project: projects;
 }
 
-export const DashboardProjectCard = ({
-  onOpenChange,
-  open,
-  project,
-}: Props) => {
-  const { mutate, isPending } = useDeleteProject();
-  const handleDelete = (id: string) => {
-    mutate(id);
-  };
+export function DashboardProjectCard({ project }: ProjectCardProps) {
+  const pathname = usePathname();
+  const [editModelOpen, setEditModelOpen] = useState(false);
+  const [deleteModelOpen, setDeleteModelOpen] = useState(false);
+
+  const isDone = project.status === "DONE";
+
   return (
     <motion.div
+      whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3 }}
-      className="group relative">
-      {/* Gradient Glow Border */}
-      <div className="absolute -inset-px rounded-2xl bg-linear-to-br from-primary/40 via-transparent to-primary/40 opacity-0 group-hover:opacity-100 blur-md transition duration-500" />
-
-      <Card className="relative overflow-hidden rounded-2xl border bg-background/70 backdrop-blur-xl shadow-sm transition-all duration-300 group-hover:shadow-2xl">
-        {/* Image Section */}
-        {project.imageUrl && (
-          <div className="relative h-48 w-full overflow-hidden">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.4 }}
-              className="h-full w-full">
-              <Image
-                src={project.imageUrl}
-                alt={project.name}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-
-            {/* Floating Actions */}
-            <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition">
-              <EditProjectDialog
-                project={project}
-                open={open}
-                onOpenChange={onOpenChange}
-              />
-
-              <Button
-                size="icon"
-                variant="secondary"
-                className="backdrop-blur-md"
-                onClick={() => handleDelete(project.id)}
-                disabled={isPending}>
-                <Trash2 className="w-4 h-4 text-destructive" />
-              </Button>
-            </div>
+      className="group relative flex flex-col w-full  border border-border/50 rounded-3xl overflow-hidden transition-all hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/20">
+      <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {pathname === "/dashboard" && (
+          <div className="flex gap-2">
+            <button
+              onClick={() => setEditModelOpen(true)}
+              className="p-2 bg-background/80 backdrop-blur-md border border-border rounded-full text-foreground hover:bg-primary hover:text-primary-foreground transition-all shadow-xl"
+              title="Edit Project">
+              <Pencil className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => setDeleteModelOpen(true)}
+              className="p-2 bg-background/80 backdrop-blur-md border border-border rounded-full text-destructive hover:bg-destructive hover:text-destructive-foreground transition-all shadow-xl disabled:opacity-50"
+              title="Delete Project">
+              <Trash2 className={`w-4 h-4 }`} />
+            </button>
+          </div>
+        )}
+      </div>
+      {/* Header Image Section */}
+      <div className="relative h-48 w-full bg-muted overflow-hidden">
+        {project.imageUrl ? (
+          <Image
+            src={project.imageUrl}
+            alt={project.name}
+            width={50}
+            height={50}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-primary/10 to-primary/5">
+            <span className="text-6xl font-black text-primary/10 select-none">
+              {project.name.charAt(0)}
+            </span>
           </div>
         )}
 
-        <CardHeader className="space-y-3">
-          {/* Title */}
-          <CardTitle className="text-xl font-semibold tracking-tight flex items-center gap-2">
+        {/* Status Badge */}
+        <div className="absolute bottom-4 left-4">
+          <span
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border ${
+              isDone
+                ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                : "bg-amber-500/10 text-amber-400 border-amber-500/20"
+            }`}>
+            {isDone ? (
+              <CheckCircle2 className="w-3 h-3" />
+            ) : (
+              <Clock className="w-3 h-3" />
+            )}
+            {project.status}
+          </span>
+        </div>
+      </div>
+      {/* Content Section */}
+      <div className="p-6 flex flex-col grow">
+        <div className="mb-4">
+          <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
             {project.name}
-          </CardTitle>
-
-          {/* Description */}
-          <CardDescription className="line-clamp-2 text-sm leading-relaxed">
+          </h3>
+          <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">
             {project.description}
-          </CardDescription>
+          </p>
+        </div>
 
-          {/* Badges */}
-          <div className="flex gap-2 pt-1">
-            <motion.div whileHover={{ scale: 1.08 }}>
-              <Badge
-                variant={project.status === "DONE" ? "default" : "secondary"}
-                className="capitalize">
-                {project.status.toLowerCase()}
-              </Badge>
-            </motion.div>
-
-            <motion.div whileHover={{ scale: 1.08 }}>
-              <Badge variant="outline">
-                {project.repo === "FRONTEND" ? "Frontend" : "Backend"}
-              </Badge>
-            </motion.div>
+        <div className="mt-auto space-y-4">
+          {/* Metadata Row */}
+          <div className="flex items-center gap-4 text-xs text-muted-foreground font-medium">
+            <div className="flex items-center gap-1.5">
+              <GitBranch className="w-3.5 h-3.5 text-primary" />
+              <span className="uppercase tracking-tight">
+                {project.repo.replace("_", " ")}
+              </span>
+            </div>
           </div>
-        </CardHeader>
-        <Separator />
-        <CardContent className="">
-          <div className="flex  items-center gap-3">
-            {project.gitFrontend && (
-              <motion.a
-                whileHover={{ y: -2 }}
-                href={project.gitFrontend}
-                target="_blank"
-                className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:border-primary transition">
-                <Github className="w-3.5 h-3.5" />
-                Frontend
-              </motion.a>
+
+          {/* Action Links */}
+          <div className="grid grid-cols-2 gap-2">
+            {/* Git Frontend */}
+            {project.gitFrontendLink && (
+              <Button variant={"outline"} asChild>
+                <Link
+                  href={project.gitFrontendLink}
+                  target="_blank"
+                  >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>Frontend</span>
+                </Link>
+              </Button>
             )}
 
-            {project.gitBackend && (
-              <motion.a
-                whileHover={{ y: -2 }}
-                href={project.gitBackend}
-                target="_blank"
-                className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:border-primary transition">
-                <Github className="w-3.5 h-3.5" />
-                Backend
-              </motion.a>
+            {/* Git Backend */}
+            {project.gitBackendLink && (
+              <Button variant={"outline"} asChild>
+                <Link href={project.gitBackendLink} target="_blank">
+                  <Database className="w-3.5 h-3.5" />
+                  <span>Backend</span>
+                </Link>
+              </Button>
             )}
 
             {project.liveLink && (
-              <motion.a
-                whileHover={{ y: -2 }}
-                href={project.liveLink}
-                target="_blank"
-                className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:border-primary transition">
-                <Globe className="w-3.5 h-3.5" />
-                Live
-              </motion.a>
+              <Button asChild>
+                <Link
+                  href={project.liveLink}
+                  target="_blank"
+                  className={` ${
+                    !project.gitFrontendLink && !project.gitBackendLink
+                      ? "col-span-2"
+                      : "col-span-2"
+                  }`}>
+                  <Globe className="w-3.5 h-3.5" />
+                  <span>Visit Live Demo</span>
+                  <ExternalLink className="w-3 h-3 ml-auto opacity-50" />
+                </Link>
+              </Button>
             )}
           </div>
-        </CardContent>
-
-        <CardFooter className="flex items-center justify-between border-t pt-4 pb-2 text-xs text-muted-foreground">
-          <span className="opacity-70">Last updated</span>
-          <span className="font-medium text-foreground">
-            {new Date(project.updatedAt).toLocaleDateString()}
-          </span>
-        </CardFooter>
-      </Card>
+        </div>
+      </div>
+      <EditProjectDialog
+        project={project}
+        onOpenChange={setEditModelOpen}
+        open={editModelOpen}
+      />
+      <DeleteProjectDialog
+        project={project}
+        onOpenChange={setDeleteModelOpen}
+        open={deleteModelOpen}
+      />
+      {/* Decorative Shimmer Effect */}
+      <div className="absolute inset-0 pointer-events-none border border-white/5 rounded-3xl" />
     </motion.div>
   );
-};
+}
