@@ -27,6 +27,7 @@ interface ProjectCardProps {
 }
 
 export function DashboardProjectCard({ project }: ProjectCardProps) {
+  console.log("🚀 ~ DashboardProjectCard ~ project:", project)
   const pathname = usePathname();
   const [editModelOpen, setEditModelOpen] = useState(false);
   const [deleteModelOpen, setDeleteModelOpen] = useState(false);
@@ -63,8 +64,8 @@ export function DashboardProjectCard({ project }: ProjectCardProps) {
           <Image
             src={project.imageUrl}
             alt={project.name}
-            width={50}
-            height={50}
+            width={400}
+            height={400}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         ) : (
